@@ -39,5 +39,6 @@ pandoc_html_extras_args <- function(extras, self_contained, lib_dir,
                     before_body = as_tmpfile(extras$before_body),
                     after_body = as_tmpfile(extras$after_body)))
 
+  print(args)
   args
 }
