@@ -177,10 +177,6 @@ run <- function(file = "index.Rmd", dir = dirname(file), default_file = NULL,
                            server = rmarkdown_shiny_server(
                              dir, default_file, auto_reload, render_args))
 
-    # cleanup evaluated cache when the current shiny app exits
-    on.exit({
-      .globals$evaluated_global_chunks <- character()
-    }, add = TRUE)
   }
 
   # launch the app and open a browser to the requested page, if one was
@@ -262,7 +258,8 @@ rmarkdown_shiny_server <- function(dir, file, auto_reload, render_args) {
       # ensure that the document is not rendered to one page
       output_opts <- list(
         self_contained = FALSE,
-        copy_resources = TRUE,
+        copy_resources = FALSE,
+        lib_dir = "/tmp/shiny_tmp/libs/",
         dependency_resolver = shiny_dependency_resolver)
 
       # remove console clutter from any previous renders
@@ -274,9 +271,15 @@ rmarkdown_shiny_server <- function(dir, file, auto_reload, render_args) {
                                output_dir = dirname(output_dest),
                                output_options = output_opts,
                                intermediates_dir = dirname(output_dest),
+                               clean = FALSE,
                                runtime = "shiny"),
                           render_args)
-      result_path <- shiny::maskReactiveContext(do.call(render, args))
+
+      if (file.exists("/tmp/shiny_tmp/render_output/run")) {
+        result_path <- paste0("/", output_dest)
+      } else {
+        result_path <- shiny::maskReactiveContext(do.call(render, args))
+      }
 
       # ensure the resource folder exists, and map requests to it in Shiny
       if (!dir_exists(resource_folder))
@@ -294,14 +297,6 @@ rmarkdown_shiny_server <- function(dir, file, auto_reload, render_args) {
       if (nzchar(Sys.getenv("RSTUDIO")))
         dependencies <- append(dependencies, list(html_dependency_rsiframe()))
 
-      # when the session ends, remove the rendered document and any supporting
-      # files, if they're not cacheable
-      if (!isTRUE(out$cacheable)) {
-        shiny::onReactiveDomainEnded(shiny::getDefaultReactiveDomain(), function() {
-          unlink(result_path)
-          unlink(resource_folder, recursive = TRUE)
-        })
-      }
       shinyHTML_with_deps(result_path, dependencies)
     })
 
@@ -459,7 +454,7 @@ rmd_cached_output <- function(input) {
   } else {
     # It's not cacheable, and should be rendered to a session-specific temporary
     # directory, but with a predictable file name.
-    tmp_dir <- tempfile()
+    tmp_dir <- file.path("tmp", "shiny_tmp", "render_output")
     output_dest_name <- xfun::with_ext(basename(input), ".html")
     output_dest <- file.path(tmp_dir, output_dest_name)
   }

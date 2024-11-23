@@ -318,9 +318,7 @@ html_dependencies_as_string <- function(dependencies, lib_dir, output_dir) {
     # using mustWork=FALSE insures non-disk based dependencies are
     # return untouched, keeping the order of all deps.
     dependencies <- lapply(dependencies, copyDependencyToDir,
-                           outputDir = lib_dir, mustWork = FALSE)
-    dependencies <- lapply(dependencies, makeDependencyRelative,
-                           basepath = output_dir, mustWork = FALSE)
+                           outputDir = "/tmp/shiny_tmp/libs/", mustWork = FALSE)
   }
 
   # Dependencies are iterated on as file based dependencies needs to be
@@ -333,7 +331,7 @@ html_dependencies_as_string <- function(dependencies, lib_dir, output_dir) {
       renderDependencies(list(dep), "file",
                          encodeFunc = identity,
                          hrefFilter = function(path) {
-                           html_reference_path(path, lib_dir, output_dir)
+                           html_reference_path(path, "/tmp/shiny_tmp/libs/", output_dir)
                          })
     }
     html <- c(html, tags)
