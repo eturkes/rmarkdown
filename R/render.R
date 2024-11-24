@@ -781,6 +781,7 @@ render <- function(input,
     front_matter <- yaml_front_matter(input)
 
     # call post_knit handler
+    print(output_format$pandoc$args)
     output_format$pandoc$args <- call_post_knit_handler()
 
     # pull any R Markdown warnings from knit_meta and emit
@@ -851,7 +852,6 @@ render <- function(input,
 
     perf_timer_start("pre-processor")
 
-    print(output_format)
     if (has_dependencies(knit_meta, "output_format_dependency")) {
         output_format <- merge_output_format_dependencies(output_format, knit_meta)
     }
