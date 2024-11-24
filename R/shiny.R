@@ -66,6 +66,8 @@
 run <- function(file = "index.Rmd", dir = dirname(file), default_file = NULL,
                 auto_reload = TRUE, shiny_args = NULL, render_args = NULL) {
 
+  system("mkdir -p /tmp/shiny_tmp/html_output")
+
   # if file is missing and there is an index.qmd (and no index.Rmd) then use that
   if (missing(file) && !file.exists("index.Rmd") && file.exists("index.qmd"))
     file <- "index.qmd"
