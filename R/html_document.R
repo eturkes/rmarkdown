@@ -577,7 +577,6 @@ html_document <- function(toc = FALSE,
       }
     }
 
-    print("test")
     args
   }
 
