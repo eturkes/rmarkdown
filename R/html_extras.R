@@ -30,6 +30,7 @@ pandoc_html_extras_args <- function(extras, self_contained, lib_dir,
     else
       file <- as_tmpfile(html_dependencies_as_string(dependencies, lib_dir,
                                                      output_dir))
+      print(file)
     args <- c(args, pandoc_include_args(in_header = file))
   }
 
