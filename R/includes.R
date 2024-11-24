@@ -28,6 +28,10 @@ includes <- function(in_header = NULL,
                      before_body = NULL,
                      after_body = NULL) {
 
+  print(in_header)
+  print(before_body)
+  print(after_body)
+
   list(in_header = in_header,
        before_body = before_body,
        after_body = after_body)
@@ -38,7 +42,6 @@ includes <- function(in_header = NULL,
 #' @export
 includes_to_pandoc_args <- function(includes,
                                     filter = identity) {
-  print(includes)
   if (!is.null(includes))
     pandoc_include_args(in_header = filter(includes$in_header),
                         before_body = filter(includes$before_body),
