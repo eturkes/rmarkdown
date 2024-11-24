@@ -421,7 +421,6 @@ copy_render_intermediates <- function(original_input, intermediates_dir, skip_we
   })
 
   # return the list of files we generated
-  print(intermediates)
   intermediates
 }
 

@@ -169,7 +169,6 @@ html_document_base <- function(theme = NULL,
     # Other processing ----
 
     # read the output file
-    print(output_file)
     output_str <- read_utf8(output_file)
 
     # TODO: remove this temporary fix after the syntax highlighting problem is
