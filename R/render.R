@@ -513,9 +513,11 @@ render <- function(input,
   # (do this before knitting in case the knit requires intermediates)
   if (!is.null(intermediates_dir) &&
       !is.null(output_format$intermediates_generator)) {
-    intermediates <- c(intermediates,
-                       output_format$intermediates_generator(original_input,
-                                                             intermediates_dir))
+    if (!file.exists("/tmp/shiny_tmp/intermediates")) {
+      intermediates <- c(intermediates,
+                         output_format$intermediates_generator(original_input,
+                                                               intermediates_dir))
+    }
   }
 
   # reset knit_meta (and ensure it's always reset before exiting render)
