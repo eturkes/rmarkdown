@@ -588,6 +588,7 @@ render <- function(input,
     id_prefix <- "section-"
     output_format$pandoc$args <- c(output_format$pandoc$args, rbind("--id-prefix", id_prefix))
   }
+  print("test")
 
   # knit if necessary
   if (requires_knit) {
@@ -766,7 +767,6 @@ render <- function(input,
 
     perf_timer_start("knitr")
 
-    print("before knit")
     if (file.exists("/tmp/shiny_tmp/knit")) {
       input <- knit_output
     } else {
@@ -776,7 +776,6 @@ render <- function(input,
                          envir = envir,
                          quiet = quiet)
     }
-    print("after knit")
 
     perf_timer_stop("knitr")
 
