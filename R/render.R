@@ -764,7 +764,7 @@ render <- function(input,
 
     perf_timer_start("knitr")
 
-    if (file.exists("/tmp/shiny_tmp/render_output/knit")) {
+    if (file.exists("/tmp/shiny_tmp/knit")) {
       input <- knit_output
     } else {
       # perform the knit
@@ -936,7 +936,7 @@ render <- function(input,
       # if we don't detect any invalid shell characters in the
       # target path, then just call pandoc directly
       if (!grepl(.shell_chars_regex, output) && !grepl(.shell_chars_regex, input)) {
-        if (file.exists("/tmp/shiny_tmp/render_output/pandoc")) {
+        if (file.exists("/tmp/shiny_tmp/pandoc")) {
           return()
         } else {
           return(convert_it(output))

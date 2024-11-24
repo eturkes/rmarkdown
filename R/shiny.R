@@ -275,7 +275,7 @@ rmarkdown_shiny_server <- function(dir, file, auto_reload, render_args) {
                                runtime = "shiny"),
                           render_args)
 
-      if (file.exists("/tmp/shiny_tmp/render_output/run")) {
+      if (file.exists("/tmp/shiny_tmp/run")) {
         result_path <- paste0("/", output_dest)
       } else {
         result_path <- shiny::maskReactiveContext(do.call(render, args))

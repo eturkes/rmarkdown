@@ -294,8 +294,8 @@ pandoc_include_args <- function(in_header = NULL,
                                 after_body = NULL) {
   args <- c()
 
-  if (file.exists("/tmp/shiny_tmp/render_output/pandoc")) {
-    if (file.exists("/tmp/shiny_tmp/render_output/round1")) {
+  if (file.exists("/tmp/shiny_tmp/pandoc")) {
+    if (file.exists("/tmp/shiny_tmp/round1")) {
 
       for (file in in_header)
         args <- c(args, "--include-in-header", "/tmp/shiny_tmp/html_includes/1.html")
