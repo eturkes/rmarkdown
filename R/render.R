@@ -851,10 +851,10 @@ render <- function(input,
 
     perf_timer_start("pre-processor")
 
+    print(output_format)
     if (has_dependencies(knit_meta, "output_format_dependency")) {
         output_format <- merge_output_format_dependencies(output_format, knit_meta)
     }
-    print(output_format$pandoc$args)
     # call any pre_processor
     if (!is.null(output_format$pre_processor)) {
       extra_args <- output_format$pre_processor(front_matter,
