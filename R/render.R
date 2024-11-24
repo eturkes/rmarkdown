@@ -580,6 +580,7 @@ render <- function(input,
       post_knit_extra_args <- NULL
     }
     c(output_format$pandoc$args, post_knit_extra_args)
+    print(output_format$pandoc$args)
   }
 
   # determine our id-prefix (add one if necessary for runtime: shiny)
@@ -781,7 +782,6 @@ render <- function(input,
     front_matter <- yaml_front_matter(input)
 
     # call post_knit handler
-    print(output_format$pandoc$args)
     output_format$pandoc$args <- call_post_knit_handler()
 
     # pull any R Markdown warnings from knit_meta and emit
