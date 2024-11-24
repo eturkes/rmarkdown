@@ -28,10 +28,6 @@ includes <- function(in_header = NULL,
                      before_body = NULL,
                      after_body = NULL) {
 
-  print(in_header)
-  print(before_body)
-  print(after_body)
-
   list(in_header = in_header,
        before_body = before_body,
        after_body = after_body)

@@ -863,6 +863,7 @@ render <- function(input,
                                                 files_dir,
                                                 output_dir)
       output_format$pandoc$args <- c(output_format$pandoc$args, extra_args)
+      print(output_format$pandoc$args)
     }
 
     # write shiny_prerendered_dependencies if we have them
