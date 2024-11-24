@@ -275,6 +275,7 @@ rmarkdown_shiny_server <- function(dir, file, auto_reload, render_args) {
                                output_dir = dirname(output_dest),
                                output_options = output_opts,
                                intermediates_dir = dirname(output_dest),
+                               clean = FALSE,
                                runtime = "shiny"),
                           render_args)
 
