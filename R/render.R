@@ -588,6 +588,7 @@ render <- function(input,
     id_prefix <- "section-"
     output_format$pandoc$args <- c(output_format$pandoc$args, rbind("--id-prefix", id_prefix))
   }
+  print("test")
 
   # knit if necessary
   if (requires_knit) {
@@ -618,7 +619,6 @@ render <- function(input,
       on.exit(output_format$on_exit(), add = TRUE)
 
     # default rendering and chunk options
-    print("test")
     knitr::render_markdown()
     knitr::opts_chunk$set(tidy = FALSE, error = FALSE)
     # the retina option does not make sense to non-HTML output formats
