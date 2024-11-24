@@ -845,7 +845,6 @@ render <- function(input,
 
   if (run_pandoc) {
 
-    print("test")
     # set env vars required during Pandoc processing
     lua_env_vars <- xfun::set_envvar(c(RMARKDOWN_LUA_SHARED = pkg_file_lua("shared.lua")))
     on.exit(xfun::set_envvar(lua_env_vars), add = TRUE)
@@ -855,6 +854,7 @@ render <- function(input,
     if (has_dependencies(knit_meta, "output_format_dependency")) {
         output_format <- merge_output_format_dependencies(output_format, knit_meta)
     }
+    print("test")
     # call any pre_processor
     if (!is.null(output_format$pre_processor)) {
       extra_args <- output_format$pre_processor(front_matter,
