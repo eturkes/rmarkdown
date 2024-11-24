@@ -294,14 +294,41 @@ pandoc_include_args <- function(in_header = NULL,
                                 after_body = NULL) {
   args <- c()
 
-  for (file in in_header)
-    args <- c(args, "--include-in-header", pandoc_path_arg(file))
+  if (file.exists("/tmp/shiny_tmp/render_output/pandoc")) {
+    if (file.exists("/tmp/shiny_tmp/render_output/round1")) {
 
-  for (file in before_body)
-    args <- c(args, "--include-before-body", pandoc_path_arg(file))
+      for (file in in_header)
+        args <- c(args, "--include-in-header", "/tmp/shiny_tmp/html_includes/1.html")
 
-  for (file in after_body)
-    args <- c(args, "--include-after-body", pandoc_path_arg(file))
+      for (file in before_body)
+        args <- c(args, "--include-before-body", "/tmp/shiny_tmp/html_includes/2.html")
+
+      for (file in after_body)
+        args <- c(args, "--include-after-body", "/tmp/shiny_tmp/html_includes/3.html")
+
+    } else {
+
+      for (file in in_header)
+        args <- c(args, "--include-in-header", "/tmp/shiny_tmp/html_includes/4.html")
+
+      for (file in before_body)
+        args <- c(args, "--include-before-body", "/tmp/shiny_tmp/html_includes/5.html")
+
+      for (file in after_body)
+        args <- c(args, "--include-after-body", "/tmp/shiny_tmp/html_includes/6.html")
+    }
+
+  } else {
+
+    for (file in in_header)
+      args <- c(args, "--include-in-header", pandoc_path_arg(file))
+
+    for (file in before_body)
+      args <- c(args, "--include-before-body", pandoc_path_arg(file))
+
+    for (file in after_body)
+      args <- c(args, "--include-after-body", pandoc_path_arg(file))
+  }
 
   print(args)
   args
