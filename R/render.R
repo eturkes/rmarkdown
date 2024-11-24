@@ -854,6 +854,7 @@ render <- function(input,
     if (has_dependencies(knit_meta, "output_format_dependency")) {
         output_format <- merge_output_format_dependencies(output_format, knit_meta)
     }
+    print(output_format$pandoc$args)
     # call any pre_processor
     if (!is.null(output_format$pre_processor)) {
       extra_args <- output_format$pre_processor(front_matter,
@@ -863,7 +864,6 @@ render <- function(input,
                                                 files_dir,
                                                 output_dir)
       output_format$pandoc$args <- c(output_format$pandoc$args, extra_args)
-      print(output_format$pandoc$args)
     }
 
     # write shiny_prerendered_dependencies if we have them
