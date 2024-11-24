@@ -623,6 +623,7 @@ render <- function(input,
     # the retina option does not make sense to non-HTML output formats
     if (!grepl('[.]html$', output_file)) knitr::opts_chunk$set(fig.retina = NULL)
 
+    print("test")
     # store info about the final output format in opts_knit
     knitr::opts_knit$set(
       rmarkdown.pandoc.from = output_format$pandoc$from,
@@ -668,7 +669,6 @@ render <- function(input,
     # setting the runtime (static/shiny) type
     knitr::opts_knit$set(rmarkdown.runtime = runtime)
 
-    print("test")
     # install evaluate hook for shiny_prerendred
     if (is_shiny_prerendered(runtime)) {
 
