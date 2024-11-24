@@ -941,6 +941,7 @@ render <- function(input,
         if (file.exists("/tmp/shiny_tmp/pandoc")) {
           return()
         } else {
+          print("test")
           return(convert_it(output))
         }
       }
