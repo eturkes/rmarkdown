@@ -306,6 +306,8 @@ pandoc_include_args <- function(in_header = NULL,
       for (file in after_body)
         args <- c(args, "--include-after-body", "/tmp/shiny_tmp/html_includes/3.html")
 
+      system("touch /tmp/shiny_tmp/round1")
+
     } else {
 
       for (file in in_header)
