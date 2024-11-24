@@ -843,9 +843,9 @@ render <- function(input,
   }
   intermediates <- c(intermediates, intermediates_fig)
 
-  print("test")
   if (run_pandoc) {
 
+    print("test")
     # set env vars required during Pandoc processing
     lua_env_vars <- xfun::set_envvar(c(RMARKDOWN_LUA_SHARED = pkg_file_lua("shared.lua")))
     on.exit(xfun::set_envvar(lua_env_vars), add = TRUE)
