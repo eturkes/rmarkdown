@@ -797,7 +797,6 @@ render <- function(input,
 
   } else {
     output_format$pandoc$args <- call_post_knit_handler()
-    print("test")
   }
 
   # if this isn't html and there are html dependencies then flag an error
@@ -844,6 +843,7 @@ render <- function(input,
   }
   intermediates <- c(intermediates, intermediates_fig)
 
+  print("test")
   if (run_pandoc) {
 
     # set env vars required during Pandoc processing
