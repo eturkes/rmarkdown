@@ -577,6 +577,7 @@ html_document <- function(toc = FALSE,
       }
     }
 
+    print("test")
     args
   }
 
@@ -629,7 +630,6 @@ html_document <- function(toc = FALSE,
                       else
                         identity))
 
-    print("test")
     # return additional args
     args
   }
