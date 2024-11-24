@@ -80,7 +80,6 @@ html_document_base <- function(theme = NULL,
   pre_processor <- function(metadata, input_file, runtime, knit_meta,
                             files_dir, output_dir) {
 
-    print("test")
     args <- c()
 
     # use files_dir as lib_dir if not explicitly specified
@@ -151,6 +150,7 @@ html_document_base <- function(theme = NULL,
 
     preserved_chunks <<- extract_preserve_chunks(input_file)
 
+    print("test")
     args
   }
 
