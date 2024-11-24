@@ -796,8 +796,8 @@ render <- function(input,
     knit_meta <- knit_meta_reset()
 
   } else {
-    print("test")
     output_format$pandoc$args <- call_post_knit_handler()
+    print("test")
   }
 
   # if this isn't html and there are html dependencies then flag an error
