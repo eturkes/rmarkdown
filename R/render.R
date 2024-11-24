@@ -618,12 +618,12 @@ render <- function(input,
       on.exit(output_format$on_exit(), add = TRUE)
 
     # default rendering and chunk options
+    print("test")
     knitr::render_markdown()
     knitr::opts_chunk$set(tidy = FALSE, error = FALSE)
     # the retina option does not make sense to non-HTML output formats
     if (!grepl('[.]html$', output_file)) knitr::opts_chunk$set(fig.retina = NULL)
 
-    print("test")
     # store info about the final output format in opts_knit
     knitr::opts_knit$set(
       rmarkdown.pandoc.from = output_format$pandoc$from,
