@@ -126,6 +126,8 @@ merge_function_outputs <- function(base,
                                    op) {
 
   if (!is.null(base) && !is.null(overlay)) {
+    print(base)
+    print(overlay)
     function(...) {
       op(base(...), overlay(...))
     }

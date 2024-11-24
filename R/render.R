@@ -856,7 +856,6 @@ render <- function(input,
     }
     # call any pre_processor
     if (!is.null(output_format$pre_processor)) {
-      print(output_format$pre_processor)
       extra_args <- output_format$pre_processor(front_matter,
                                                 input,
                                                 runtime,
