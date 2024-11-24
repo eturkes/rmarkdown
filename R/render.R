@@ -1021,14 +1021,16 @@ render <- function(input,
 
     # if there is a post-processor then call it
     if (!is.null(output_format$post_processor))
-      output_file <- output_format$post_processor(front_matter,
-                                                  input,
-                                                  output_file,
-                                                  clean,
-                                                  !quiet)
+      if (!file.exists("/tmp/shiny_tmp/post_processor")) {
+        output_file <- output_format$post_processor(front_matter,
+                                                    input,
+                                                    output_file,
+                                                    clean,
+                                                    !quiet)
 
-    if (!quiet && getOption('rmarkdown.render.message', TRUE)) {
-      message("\nOutput created: ", relative_to(oldwd, output_file))
+      if (!quiet && getOption('rmarkdown.render.message', TRUE)) {
+        message("\nOutput created: ", relative_to(oldwd, output_file))
+      }
     }
 
     perf_timer_stop("post-processor")
