@@ -303,6 +303,7 @@ pandoc_include_args <- function(in_header = NULL,
   for (file in after_body)
     args <- c(args, "--include-after-body", pandoc_path_arg(file))
 
+  print(args)
   args
 }
 
