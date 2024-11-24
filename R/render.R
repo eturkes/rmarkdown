@@ -580,7 +580,6 @@ render <- function(input,
       post_knit_extra_args <- NULL
     }
     c(output_format$pandoc$args, post_knit_extra_args)
-    print(output_format$pandoc$args)
   }
 
   # determine our id-prefix (add one if necessary for runtime: shiny)
@@ -767,6 +766,7 @@ render <- function(input,
 
     perf_timer_start("knitr")
 
+    print("before knit")
     if (file.exists("/tmp/shiny_tmp/knit")) {
       input <- knit_output
     } else {
@@ -776,6 +776,7 @@ render <- function(input,
                          envir = envir,
                          quiet = quiet)
     }
+    print("after knit")
 
     perf_timer_stop("knitr")
 
