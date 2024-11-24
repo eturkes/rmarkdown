@@ -588,7 +588,6 @@ render <- function(input,
     id_prefix <- "section-"
     output_format$pandoc$args <- c(output_format$pandoc$args, rbind("--id-prefix", id_prefix))
   }
-  print("test")
 
   # knit if necessary
   if (requires_knit) {
@@ -669,6 +668,7 @@ render <- function(input,
     # setting the runtime (static/shiny) type
     knitr::opts_knit$set(rmarkdown.runtime = runtime)
 
+    print("test")
     # install evaluate hook for shiny_prerendred
     if (is_shiny_prerendered(runtime)) {
 
