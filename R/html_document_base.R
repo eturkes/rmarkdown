@@ -150,6 +150,7 @@ html_document_base <- function(theme = NULL,
 
     preserved_chunks <<- extract_preserve_chunks(input_file)
 
+    print(args)
     args
   }
 
