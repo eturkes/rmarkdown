@@ -177,6 +177,10 @@ run <- function(file = "index.Rmd", dir = dirname(file), default_file = NULL,
                            server = rmarkdown_shiny_server(
                              dir, default_file, auto_reload, render_args))
 
+    # cleanup evaluated cache when the current shiny app exits
+    on.exit({
+      .globals$evaluated_global_chunks <- character()
+    }, add = TRUE)
   }
 
   # launch the app and open a browser to the requested page, if one was
@@ -271,7 +275,6 @@ rmarkdown_shiny_server <- function(dir, file, auto_reload, render_args) {
                                output_dir = dirname(output_dest),
                                output_options = output_opts,
                                intermediates_dir = dirname(output_dest),
-                               clean = FALSE,
                                runtime = "shiny"),
                           render_args)
 
