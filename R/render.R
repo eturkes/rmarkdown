@@ -588,7 +588,6 @@ render <- function(input,
     id_prefix <- "section-"
     output_format$pandoc$args <- c(output_format$pandoc$args, rbind("--id-prefix", id_prefix))
   }
-  print("test")
 
   # knit if necessary
   if (requires_knit) {
@@ -797,6 +796,7 @@ render <- function(input,
     knit_meta <- knit_meta_reset()
 
   } else {
+    print("test")
     output_format$pandoc$args <- call_post_knit_handler()
   }
 
