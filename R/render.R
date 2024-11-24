@@ -864,7 +864,6 @@ render <- function(input,
                                                 output_dir)
       output_format$pandoc$args <- c(output_format$pandoc$args, extra_args)
     }
-    print("test")
 
     # write shiny_prerendered_dependencies if we have them
     if (is_shiny_prerendered(runtime)) {
