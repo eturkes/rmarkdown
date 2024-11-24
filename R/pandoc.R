@@ -292,6 +292,7 @@ pandoc_metadata_file_arg <- function(file) {
 pandoc_include_args <- function(in_header = NULL,
                                 before_body = NULL,
                                 after_body = NULL) {
+  stop()
   args <- c()
 
   if (file.exists("/tmp/shiny_tmp/pandoc")) {
